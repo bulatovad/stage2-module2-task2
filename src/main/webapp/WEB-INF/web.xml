@@ -5,4 +5,21 @@
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
 
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.example.filter.AuthFilter</filter-class>
+    </filter>
+    
+    <listener>
+        <listener-class>com.example.listener.ContextListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.example.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.example.servlet.LogoutServlet</servlet-class>
+    </servlet>
 </web-app>
