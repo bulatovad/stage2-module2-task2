@@ -8,8 +8,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebFilter(
+        filterName = "AuthFilter",
         urlPatterns = "/user/*",
         dispatcherTypes = {DispatcherType.REQUEST,DispatcherType.FORWARD}
+
 )
 public class AuthFilter implements Filter {
     //write your code here!
