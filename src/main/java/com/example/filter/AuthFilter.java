@@ -7,12 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(
-        filterName = "AuthFilter",
-        urlPatterns = "/user/*",
-        dispatcherTypes = {DispatcherType.REQUEST,DispatcherType.FORWARD}
-
-)
+@WebFilter("/AuthFilter")
 public class AuthFilter implements Filter {
     //write your code here!
     @Override
