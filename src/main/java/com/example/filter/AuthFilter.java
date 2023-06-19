@@ -25,10 +25,10 @@ public class AuthFilter implements Filter {
 
 
         if(session == null){
-            res.sendRedirect("login.jsp");
+            res.sendRedirect("/login.jsp");
         } else if(session.getAttribute("user")==null) {
             session.invalidate();
-            res.sendRedirect("login.jsp");
+            res.sendRedirect("/login.jsp");
         } else {
             // pass the request along the filter chain
             filterChain.doFilter(req, res);
