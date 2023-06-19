@@ -9,10 +9,12 @@ import java.io.IOException;
 
 @WebFilter(
         filterName = "AuthFilter",
-        urlPatterns = {"/user/*"},
-        servletNames = {"LoginServlet", "LogoutServlet"})
+        urlPatterns = "/user/*",
+        servletNames = {"LoginServlet", "LogoutServlet"},
+        dispatcherTypes = DispatcherType.REQUEST)
 public class AuthFilter implements Filter {
     //write your code here!
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
@@ -21,10 +23,12 @@ public class AuthFilter implements Filter {
         HttpSession session = req.getSession(false);
 
 
+
         if(session == null){
-            req.getRequestDispatcher("login.jsp").forward(req, res);
+            res.sendRedirect("login.jsp");
         } else if(session.getAttribute("user")==null) {
-            req.getRequestDispatcher("login.jsp").forward(req, res);
+            session.invalidate();
+            res.sendRedirect("login.jsp");
         } else {
             // pass the request along the filter chain
             filterChain.doFilter(req, res);
